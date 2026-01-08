@@ -1,0 +1,22 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand Colors */
+  --color-skr-blue: #0F4C81;
+  --color-skr-red: #E63946;
+  --color-skr-dark: #1A1A1A;
+  --color-skr-light: #F8F9FA;
+  
+  /* Hero Background */
+  --background-image-hero-pattern: linear-gradient(to right bottom, rgba(15, 76, 129, 0.9), rgba(26, 26, 26, 0.8)), url('https://images.unsplash.com/photo-1541888946425-d81bb19240f5?q=80&w=2070&auto=format&fit=crop');
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-skr-light);
+  color: var(--color-skr-dark);
+}
