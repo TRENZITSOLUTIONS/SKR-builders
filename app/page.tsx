@@ -584,6 +584,13 @@ export default function V13() {
            <MapPin size={16} /> #292/1, Leo Apartment, Viduthalai Nagar, Chennai - 600 117.
         </div>
       </footer>
+
+      {/* Developer Credit */}
+      <div className="bg-[#0a0a0a] border-t border-gray-950 py-3 text-center">
+        <p className="text-xs text-gray-600">
+          © {new Date().getFullYear()} Trenzit Solutions. All rights reserved.
+        </p>
+      </div>
     </div>
   );
 }
