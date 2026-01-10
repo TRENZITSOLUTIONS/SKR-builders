@@ -588,7 +588,7 @@ export default function V13() {
       {/* Developer Credit */}
       <div className="bg-[#0a0a0a] border-t border-gray-950 py-3 text-center">
         <p className="text-xs text-gray-600">
-          © {new Date().getFullYear()} Trenzit Solutions. All rights reserved.
+          © {new Date().getFullYear()} Trenz Technologies. All rights reserved.
         </p>
       </div>
     </div>
