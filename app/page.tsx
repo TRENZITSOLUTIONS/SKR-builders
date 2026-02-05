@@ -3,17 +3,19 @@
 import { motion, useScroll, useTransform, AnimatePresence, Variants } from "framer-motion";
 import { Phone, MapPin, ArrowRight, Check, Copy, Mail, MessageCircle, X, CheckCircle2, Hammer, Calculator } from "lucide-react";
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import NextImage from "next/image";
 
 // --- ANIMATION VARIANTS ---
 const fadeIn: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.8, 
-      ease: "easeOut" 
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut"
+    }
   }
 };
 
@@ -62,7 +64,7 @@ const packages = {
 function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => void }) {
   const [area, setArea] = useState<number>(1000);
   const [selectedPkg, setSelectedPkg] = useState<"basic" | "classic" | "custom">("basic");
-  
+
   // Calculate cost only if not custom
   const totalCost = selectedPkg === "custom" ? 0 : area * packages[selectedPkg].rate;
 
@@ -70,14 +72,14 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
     <AnimatePresence>
       {isOpen && (
         <>
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
             className="fixed inset-0 bg-black/60 z-[90] backdrop-blur-sm"
           />
-          <motion.div 
+          <motion.div
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
@@ -85,12 +87,12 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
             className="fixed top-0 right-0 h-full w-full md:w-[600px] bg-[#0F4C81] z-[100] border-l-4 border-white shadow-2xl overflow-y-auto"
           >
             {/* Grid Background */}
-            <div className="absolute inset-0 opacity-10 pointer-events-none" 
-                 style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '20px 20px' }} 
+            <div className="absolute inset-0 opacity-10 pointer-events-none"
+              style={{ backgroundImage: 'linear-gradient(white 1px, transparent 1px), linear-gradient(90deg, white 1px, transparent 1px)', backgroundSize: '20px 20px' }}
             />
 
             <div className="relative z-10 p-6 md:p-10 text-white font-mono h-full flex flex-col">
-              
+
               {/* Header */}
               <div className="flex justify-between items-start mb-8 border-b border-white/30 pb-4">
                 <div className="flex items-center gap-3">
@@ -109,18 +111,18 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
               <div className={`mb-8 transition-opacity duration-300 ${selectedPkg === "custom" ? "opacity-50 pointer-events-none" : "opacity-100"}`}>
                 <label className="text-xs font-bold uppercase tracking-widest text-blue-200 mb-2 block">01 // BUILD AREA (SQ.FT)</label>
                 <div className="flex items-center gap-4">
-                  <input 
-                    type="range" 
-                    min="500" 
-                    max="5000" 
-                    step="50" 
-                    value={area} 
+                  <input
+                    type="range"
+                    min="500"
+                    max="5000"
+                    step="50"
+                    value={area}
                     onChange={(e) => setArea(Number(e.target.value))}
                     className="w-full accent-[#E63946] h-2 bg-white/20 rounded-lg appearance-none cursor-pointer"
                   />
-                  <input 
-                    type="number" 
-                    value={area} 
+                  <input
+                    type="number"
+                    value={area}
                     onChange={(e) => setArea(Number(e.target.value))}
                     className="w-24 bg-white/10 border border-white/30 p-2 text-center font-bold rounded"
                   />
@@ -132,7 +134,7 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
                 <label className="text-xs font-bold uppercase tracking-widest text-blue-200 mb-4 block">02 // SELECT PACKAGE</label>
                 <div className="grid grid-cols-3 gap-2">
                   {/* Basic Card */}
-                  <div 
+                  <div
                     onClick={() => setSelectedPkg("basic")}
                     className={`border-2 p-2 cursor-pointer transition-all ${selectedPkg === "basic" ? "bg-white text-[#0F4C81] border-white" : "border-white/30 hover:bg-white/10"}`}
                   >
@@ -144,7 +146,7 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
                   </div>
 
                   {/* Classic Card */}
-                  <div 
+                  <div
                     onClick={() => setSelectedPkg("classic")}
                     className={`border-2 p-2 cursor-pointer transition-all ${selectedPkg === "classic" ? "bg-[#E63946] text-white border-[#E63946]" : "border-white/30 hover:bg-white/10"}`}
                   >
@@ -156,7 +158,7 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
                   </div>
 
                   {/* Custom Card (NEW) */}
-                  <div 
+                  <div
                     onClick={() => setSelectedPkg("custom")}
                     className={`border-2 p-2 cursor-pointer transition-all ${selectedPkg === "custom" ? "bg-green-500 text-white border-green-500" : "border-white/30 hover:bg-white/10"}`}
                   >
@@ -172,19 +174,19 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
               {/* Features List or Custom Message */}
               <div className="flex-grow overflow-y-auto mb-8 pr-2 custom-scrollbar">
                 <label className="text-xs font-bold uppercase tracking-widest text-blue-200 mb-3 block">DETAILS:</label>
-                
+
                 {selectedPkg === "custom" ? (
                   <div className="bg-white/10 p-6 rounded-lg border border-white/20 text-center">
                     <Hammer className="mx-auto mb-4 text-green-400" size={32} />
                     <h3 className="text-xl font-bold mb-2">Tailored For You</h3>
                     <p className="text-sm opacity-80 mb-4">
-                      Need a specific material brand? Luxury finish? Or a commercial complex? 
+                      Need a specific material brand? Luxury finish? Or a commercial complex?
                       We create custom BOQs matching your exact requirements and budget.
                     </p>
                     <ul className="text-sm text-left space-y-2 mb-4 mx-auto max-w-[200px]">
-                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400"/> Specific Brands</li>
-                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400"/> Architectural Designs</li>
-                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400"/> Turnkey Solutions</li>
+                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400" /> Specific Brands</li>
+                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400" /> Architectural Designs</li>
+                      <li className="flex items-center gap-2"><Check size={12} className="text-green-400" /> Turnkey Solutions</li>
                     </ul>
                   </div>
                 ) : (
@@ -205,15 +207,15 @@ function BlueprintPanel({ isOpen, onClose }: { isOpen: boolean, onClose: () => v
               {/* Total & Action */}
               <div className="mt-auto bg-black/30 -mx-6 -mb-10 p-6 md:p-10 border-t border-white/20">
                 {selectedPkg === "custom" ? (
-                   <div className="text-center">
-                     <a 
-                       href="https://wa.me/919087411115?text=Hi%2C%20I%20need%20a%20custom%20quote%20for%20my%20project."
-                       target="_blank"
-                       className="w-full bg-green-500 text-white py-4 font-black text-lg uppercase tracking-widest hover:bg-green-400 transition-colors flex items-center justify-center gap-3 shadow-lg active:scale-95 rounded-lg"
-                     >
-                       <MessageCircle size={20} /> CHAT FOR ESTIMATE
-                     </a>
-                   </div>
+                  <div className="text-center">
+                    <a
+                      href="https://wa.me/919087411115?text=Hi%2C%20I%20need%20a%20custom%20quote%20for%20my%20project."
+                      target="_blank"
+                      className="w-full bg-green-500 text-white py-4 font-black text-lg uppercase tracking-widest hover:bg-green-400 transition-colors flex items-center justify-center gap-3 shadow-lg active:scale-95 rounded-lg"
+                    >
+                      <MessageCircle size={20} /> CHAT FOR ESTIMATE
+                    </a>
+                  </div>
                 ) : (
                   <>
                     <div className="flex justify-between items-end mb-6">
@@ -257,48 +259,48 @@ function CallModal({ isOpen, onClose, onCopy }: { isOpen: boolean, onClose: () =
             transition={{ type: "spring", damping: 25, stiffness: 300 }}
             className="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90%] max-w-sm bg-gradient-to-br from-[#0F4C81] to-[#0a3356] rounded-[2rem] p-8 shadow-2xl z-[101] text-center border border-white/10 overflow-hidden"
           >
-             <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
-             <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-400 rounded-full blur-[80px] opacity-20" />
-             
-             <div className="relative mx-auto mb-6">
-               <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 mx-auto relative z-10">
-                 <MessageCircle size={40} className="text-white drop-shadow-lg" />
-               </div>
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-white/30 rounded-full animate-ping opacity-50" />
-               <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-white/10 rounded-full animate-ping animation-delay-200 opacity-30" />
-             </div>
-             
-             <h3 className="text-3xl font-black text-white mb-1 tracking-tight">R. Anand</h3>
-             <p className="text-blue-200 text-sm font-bold uppercase tracking-widest mb-6">Proprietor • SKR</p>
-             
-             <div className="bg-white/5 p-4 rounded-xl mb-6 border border-white/10">
-               <p className="text-2xl font-black text-white tracking-wider">+91 90874 11115</p>
-             </div>
-             
-             <div className="space-y-4 relative z-10">
-                <a 
-                 href="https://wa.me/919087411115?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services."
-                 target="_blank"
-                 rel="noopener noreferrer"
-                 className="block w-full py-4 bg-[#25D366] hover:bg-[#20b858] text-white font-bold rounded-xl shadow-lg shadow-green-900/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
-               >
-                 <MessageCircle size={20} fill="currentColor" /> CHAT ON WHATSAPP
-               </a>
-               
-               <button 
-                 onClick={onCopy}
-                 className="block w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 transition-colors flex items-center justify-center gap-3"
-               >
-                 <Copy size={18} /> COPY NUMBER
-               </button>
-               
-               <button 
-                 onClick={onClose}
-                 className="block w-full py-3 bg-white/5 hover:bg-white/10 text-white/70 font-bold rounded-xl border border-white/10 transition-colors"
-               >
-                 Close
-               </button>
-             </div>
+            <div className="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-10 pointer-events-none" />
+            <div className="absolute -top-20 -right-20 w-40 h-40 bg-blue-400 rounded-full blur-[80px] opacity-20" />
+
+            <div className="relative mx-auto mb-6">
+              <div className="w-24 h-24 bg-white/10 rounded-full flex items-center justify-center backdrop-blur-sm border border-white/20 mx-auto relative z-10">
+                <MessageCircle size={40} className="text-white drop-shadow-lg" />
+              </div>
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-white/30 rounded-full animate-ping opacity-50" />
+              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-white/10 rounded-full animate-ping animation-delay-200 opacity-30" />
+            </div>
+
+            <h3 className="text-3xl font-black text-white mb-1 tracking-tight">R. Anand</h3>
+            <p className="text-blue-200 text-sm font-bold uppercase tracking-widest mb-6">Proprietor • SKR</p>
+
+            <div className="bg-white/5 p-4 rounded-xl mb-6 border border-white/10">
+              <p className="text-2xl font-black text-white tracking-wider">+91 90874 11115</p>
+            </div>
+
+            <div className="space-y-4 relative z-10">
+              <a
+                href="https://wa.me/919087411115?text=Hi%2C%20I%20am%20interested%20in%20your%20construction%20services."
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block w-full py-4 bg-[#25D366] hover:bg-[#20b858] text-white font-bold rounded-xl shadow-lg shadow-green-900/50 transition-all hover:scale-105 active:scale-95 flex items-center justify-center gap-3"
+              >
+                <MessageCircle size={20} fill="currentColor" /> CHAT ON WHATSAPP
+              </a>
+
+              <button
+                onClick={onCopy}
+                className="block w-full py-4 bg-white/10 hover:bg-white/20 text-white font-bold rounded-xl border border-white/20 transition-colors flex items-center justify-center gap-3"
+              >
+                <Copy size={18} /> COPY NUMBER
+              </button>
+
+              <button
+                onClick={onClose}
+                className="block w-full py-3 bg-white/5 hover:bg-white/10 text-white/70 font-bold rounded-xl border border-white/10 transition-colors"
+              >
+                Close
+              </button>
+            </div>
           </motion.div>
         </>
       )}
@@ -311,7 +313,7 @@ export default function V13() {
   const [isQuoteOpen, setIsQuoteOpen] = useState(false);
   const [isCallOpen, setIsCallOpen] = useState(false);
   const { scrollYProgress } = useScroll();
-  
+
   const y = useTransform(scrollYProgress, [0, 0.5], [0, 200]);
   const opacity = useTransform(scrollYProgress, [0, 0.3], [1, 0]);
 
@@ -349,9 +351,56 @@ export default function V13() {
     }
   };
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "SKR Builders And Promoters",
+    "image": "",
+    "@id": "https://www.skrbuilder.com/",
+    "url": "https://www.skrbuilder.com/",
+    "telephone": "+91 90874 11115",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "292/1, Leo Apartment, Viduthalai Nagar, 13th Street, S.Kolathur",
+      "addressLocality": "Chennai",
+      "postalCode": "600117",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 12.948870537511432,
+      "longitude": 80.19871619913584
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "00:00",
+      "closes": "23:59"
+    },
+    "sameAs": [
+      "https://www.facebook.com/profile.php?id=61587105986571",
+      "https://x.com/skrbuilders",
+      "https://www.instagram.com/skrbuildersofficial/",
+      "https://youtube.com/shorts/Eg4y-pvH_e8?feature=share",
+      "https://www.skrbuilder.com/"
+    ]
+  };
+
   return (
     <div className="bg-white min-h-screen text-[#1A1A1A] overflow-x-hidden selection:bg-[#E63946] selection:text-white font-sans">
-      
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       <BlueprintPanel isOpen={isQuoteOpen} onClose={() => setIsQuoteOpen(false)} />
       <CallModal isOpen={isCallOpen} onClose={() => setIsCallOpen(false)} onCopy={() => copyToClipboard("+91 90874 11115")} />
 
@@ -384,13 +433,20 @@ export default function V13() {
 
       {/* Hero */}
       <section className="relative h-screen w-full overflow-hidden">
-        <motion.div 
+        <motion.div
           initial={{ scale: 1.2, filter: "grayscale(100%)" }}
           animate={{ scale: 1, filter: "grayscale(0%)" }}
           transition={{ duration: 1.5, ease: "easeOut" }}
-          className="absolute inset-0 bg-cover bg-center z-0"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop')" }}
-        />
+          className="absolute inset-0 z-0"
+        >
+          <NextImage
+            src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070&auto=format&fit=crop"
+            alt="SKR Builders Hero"
+            fill
+            priority
+            className="object-cover"
+          />
+        </motion.div>
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/80 z-10" />
         <div className="relative z-20 container mx-auto px-4 h-full flex flex-col justify-center items-start">
           <motion.div style={{ y, opacity }} className="max-w-4xl">
@@ -403,7 +459,7 @@ export default function V13() {
               <div className="h-[2px] w-20 bg-[#E63946]" />
               <span className="text-[#E63946] tracking-[0.3em] font-bold uppercase">Skr Builders & Promoters</span>
             </motion.div>
-            <motion.h1 
+            <motion.h1
               initial={{ y: 50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
@@ -420,7 +476,7 @@ export default function V13() {
               transition={{ duration: 0.8 }}
               className="text-xl text-gray-200 max-w-xl mb-12 border-l-4 border-[#0F4C81] pl-6 backdrop-blur-sm bg-black/20 py-4 rounded-r-lg"
             >
-              We don't just pour concrete. We engineer lifestyles. 
+              We don't just pour concrete. We engineer lifestyles.
               Experience the pinnacle of construction with Chennai's finest.
             </motion.p>
             <motion.div
@@ -428,7 +484,7 @@ export default function V13() {
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8 }}
             >
-              <button 
+              <button
                 onClick={() => setIsQuoteOpen(true)}
                 className="group relative px-8 py-4 bg-white text-[#1A1A1A] font-bold overflow-hidden rounded-none hover:text-white transition-colors duration-300"
               >
@@ -443,7 +499,7 @@ export default function V13() {
       {/* Services */}
       <section id="services" className="py-24 bg-white">
         <div className="container mx-auto px-4">
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
@@ -455,37 +511,41 @@ export default function V13() {
             <p className="mt-4 text-gray-600">Comprehensive solutions for all your property needs</p>
           </motion.div>
 
-          <motion.div 
+          <motion.div
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
             variants={staggerContainer}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"
           >
-             <ComplexServiceCard 
-               title="Construction" 
-               desc="Building your dream home from the ground up."
-               image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053"
-               num="01"
-             />
-             <ComplexServiceCard 
-               title="Commercial" 
-               desc="High-performance workspaces driving growth."
-               image="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?q=80&w=2070"
-               num="02"
-             />
-             <ComplexServiceCard 
-               title="Renovation" 
-               desc="Breathing new life into existing structures."
-               image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031"
-               num="03"
-             />
-             <ComplexServiceCard 
-               title="Land Advisory" 
-               desc="Finding the perfect plot for your investment."
-               image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000"
-               num="04"
-             />
+            <ComplexServiceCard
+              title="Construction"
+              desc="Building your dream home from the ground up."
+              image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053"
+              num="01"
+              link="/services/construction"
+            />
+            <ComplexServiceCard
+              title="Interior Design"
+              desc="Elegant spaces tailored to your lifestyle."
+              image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000"
+              num="02"
+              link="/services/commercial"
+            />
+            <ComplexServiceCard
+              title="Renovation"
+              desc="Breathing new life into existing structures."
+              image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031"
+              num="03"
+              link="/services/renovation"
+            />
+            <ComplexServiceCard
+              title="Land Advisory"
+              desc="Verified land buying and selling services."
+              image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000"
+              num="04"
+              link="/services/land-advisory"
+            />
           </motion.div>
         </div>
       </section>
@@ -503,7 +563,7 @@ export default function V13() {
               <h3 className="text-[#E63946] font-bold tracking-widest uppercase mb-2">About Us</h3>
               <h2 className="text-4xl font-bold mb-6">Quality You Can Trust</h2>
               <p className="text-blue-100 leading-relaxed mb-6">
-                At SKR Builders and Promoters, we don't just build structures; we build relationships. 
+                At SKR Builders and Promoters, we don't just build structures; we build relationships.
                 Led by R. Anand, our team is committed to delivering excellence.
               </p>
               <ul className="space-y-3">
@@ -518,9 +578,14 @@ export default function V13() {
               initial={{ opacity: 0, scale: 0.8 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl"
+              className="relative h-[400px] rounded-2xl overflow-hidden shadow-2xl group"
             >
-              <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070')] bg-cover bg-center hover:scale-105 transition-transform duration-700" />
+              <NextImage
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=2070"
+                alt="About SKR Builders"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-700"
+              />
             </motion.div>
           </div>
         </div>
@@ -535,7 +600,7 @@ export default function V13() {
             <div className="w-24 h-1 bg-[#E63946] mx-auto rounded-full" />
             <p className="mt-4 text-gray-400">Choose how you'd like to connect with us</p>
           </div>
-          
+
           <div className="grid lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* WhatsApp */}
             <a href="https://wa.me/919087411115" target="_blank" className="group bg-[#25D366] p-1 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
@@ -581,7 +646,7 @@ export default function V13() {
       <footer className="bg-black text-gray-500 py-10 text-center text-sm border-t border-gray-900">
         <p>© {new Date().getFullYear()} SKR Builders And Promoters.</p>
         <div className="flex justify-center gap-4 mt-4">
-           <MapPin size={16} /> #292/1, Leo Apartment, Viduthalai Nagar, Chennai - 600 117.
+          <MapPin size={16} /> #292/1, Leo Apartment, Viduthalai Nagar, Chennai - 600 117.
         </div>
       </footer>
 
@@ -596,30 +661,33 @@ export default function V13() {
 }
 
 // 5. Complex Service Card
-function ComplexServiceCard({ number, title, desc, image }: any) {
+function ComplexServiceCard({ number, title, desc, image, link }: any) {
   return (
-    <motion.div 
+    <motion.div
       variants={fadeIn}
       whileHover={{ y: -10 }}
-      className="group relative h-[450px] overflow-hidden bg-gray-900 cursor-pointer rounded-2xl shadow-xl"
+      className="h-[450px] rounded-2xl shadow-xl overflow-hidden bg-gray-900"
     >
-      <img 
-        src={image} 
-        alt={title} 
-        className="absolute inset-0 w-full h-full object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700" 
-      />
-      <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
-        <span className="text-6xl font-black text-white/10 group-hover:text-white/30 transition-colors">
-          {number}
-        </span>
-        <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-          <h3 className="text-3xl font-bold text-white mb-2">{title}</h3>
-          <p className="text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 text-sm leading-relaxed">
-            {desc}
-          </p>
-          <div className="mt-6 w-12 h-1 bg-[#E63946] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+      <Link href={link} className="group relative block w-full h-full">
+        <NextImage
+          src={image}
+          alt={title}
+          fill
+          className="object-cover opacity-60 group-hover:opacity-40 group-hover:scale-110 transition-all duration-700"
+        />
+        <div className="absolute inset-0 p-8 flex flex-col justify-between z-10">
+          <span className="text-6xl font-black text-white/10 group-hover:text-white/30 transition-colors">
+            {number}
+          </span>
+          <div className="translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+            <h3 className="text-3xl font-bold text-white mb-2">{title}</h3>
+            <p className="text-gray-300 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 text-sm leading-relaxed">
+              {desc}
+            </p>
+            <div className="mt-6 w-12 h-1 bg-[#E63946] scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left" />
+          </div>
         </div>
-      </div>
+      </Link>
     </motion.div>
   );
 }

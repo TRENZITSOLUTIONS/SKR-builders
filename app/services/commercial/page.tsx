@@ -1,0 +1,99 @@
+import { Metadata } from "next";
+import CommercialClient from "./CommercialClient";
+
+export const metadata: Metadata = {
+    title: "Interior Design Services in Chennai | Commercial Interiors",
+    description: "SKR Builders and Promoters provide interior services in Chennai for homes and offices, delivering residential and commercial interiors with design execution.",
+    keywords: "interior design services in Chennai, home and office interior designers, modular kitchen design, turnkey interior services, commercial interiors near me",
+    alternates: {
+        canonical: "https://www.skrbuilder.com",
+    },
+    robots: {
+        index: true,
+        follow: true,
+    },
+    authors: [{ name: "SKR Builders And Promoters" }],
+    openGraph: {
+        title: "Residential & Commercial Interior Design in Chennai – SKR Builders",
+        type: "website",
+        url: "https://www.skrbuilder.com",
+        siteName: "SKR Builders And Promoters",
+        description: "We deliver complete interior design solutions with modular kitchens, wardrobes, lighting layouts, custom furniture, and turnkey execution for homes and offices.",
+        images: [{
+            url: "https://www.facebook.com/photo/?fbid=122095204365236866&set=pb.61587105986571.-2207520000",
+        }],
+    },
+    twitter: {
+        card: "summary",
+        site: "https://www.skrbuilder.com",
+        title: "SKR Builders & Promoters – Interior Design Services in Chennai",
+        description: "We provide interior design and turnkey services including modular kitchens, wardrobes, lighting, custom furniture, and space planning for homes and offices.",
+        creator: "@skrbuilders",
+        images: ["x.com/skrbuilders/photo"],
+    },
+    other: {
+        "audience": "all",
+        "contact": "",
+        "revisit-after": "3 days",
+        "language": "english",
+        "distribution": "global",
+        "rating": "general",
+        "copyright": "by https://www.skrbuilder.com",
+        "url": "https://www.skrbuilder.com",
+    },
+};
+
+export default function CommercialPage() {
+    const jsonLd = {
+        "@context": "https://schema.org",
+        "@type": "LocalBusiness",
+        "name": "SKR Builders And Promoters",
+        "image": "",
+        "@id": "https://www.skrbuilder.com/",
+        "url": "https://www.skrbuilder.com/",
+        "telephone": "+91 90874 11115",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "292/1, Leo Apartment, Viduthalai Nagar, 13th Street, S.Kolathur",
+            "addressLocality": "Chennai",
+            "postalCode": "600117",
+            "addressCountry": "IN"
+        },
+        "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 12.948870537511432,
+            "longitude": 80.19871619913584
+        },
+        "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Tuesday",
+                "Wednesday",
+                "Thursday",
+                "Friday",
+                "Saturday",
+                "Sunday"
+            ],
+            "opens": "00:00",
+            "closes": "23:59"
+        },
+        "sameAs": [
+            "https://www.facebook.com/profile.php?id=61587105986571",
+            "https://x.com/skrbuilders",
+            "https://www.instagram.com/skrbuildersofficial/",
+            "https://youtube.com/shorts/Eg4y-pvH_e8?feature=share",
+            "https://www.skrbuilder.com/"
+        ]
+    };
+
+    return (
+        <>
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+            />
+            <CommercialClient />
+        </>
+    );
+}
