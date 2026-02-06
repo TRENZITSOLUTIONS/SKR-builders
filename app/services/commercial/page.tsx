@@ -87,6 +87,24 @@ export default function CommercialPage() {
         ]
     };
 
+    const breadcrumbSchema = {
+        "@context": "https://schema.org",
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+            {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Home",
+                "item": "https://www.skrbuilder.com/",
+            },
+            {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Interior Design Services",
+                "item": "https://www.skrbuilder.com/services/commercial",
+            },
+        ],
+    };
     return (
         <>
             <script
