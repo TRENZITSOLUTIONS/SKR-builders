@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 
   // ✅ Google Search Console verification
   verification: {
-    google: "googlea07427e417fd9f63",
+    google: "rxayDkAPKi7k6OLRGmK1z4fB9oE8esT3IAC3X--67rE",
   },
 
   alternates: {
