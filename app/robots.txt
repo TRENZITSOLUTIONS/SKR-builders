@@ -1,0 +1,5 @@
+
+User-agent: *
+Disallow: 
+Disallow: /cgi-bin/
+Sitemap: http://www.sitemaps.org/schemas/sitemap/0.9
