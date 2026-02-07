@@ -17,16 +17,26 @@ export const metadata: Metadata = {
   title: "Construction Company in Chennai | Residential & Commercial",
   description:
     "Leading construction company in Chennai offering residential & commercial construction, turnkey projects, renovations, and complete interior execution.",
+
   keywords:
     "construction company in chennai, residential construction, commercial construction, house construction, villa construction, turnkey projects",
+
+  // ✅ Google Search Console verification
+  verification: {
+    google: "googlea07427e417fd9f63",
+  },
+
   alternates: {
     canonical: "https://www.skrbuilder.com/",
   },
+
   robots: {
     index: true,
     follow: true,
   },
+
   authors: [{ name: "SKR Builders And Promoters" }],
+
   openGraph: {
     title: "Residential & Commercial Construction in Chennai – SKR Builders",
     description:
