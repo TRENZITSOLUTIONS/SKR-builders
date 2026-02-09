@@ -57,9 +57,16 @@ export default function LandAdvisoryClient() {
                         <div>
                             <h2 className="text-3xl font-bold text-[#0F4C81] mb-8">Secure Your Investment</h2>
                             <p className="text-lg text-gray-600 mb-8 leading-relaxed">
-                                Our land buying and selling services prioritize clarity and legal compliance.
-                                Whether you're looking for CMDA/DTCP approved plots or looking to liquidate your assets,
-                                we provide expert valuation and verification at every step.
+                                SKR Builders & Promoters provide professional land advisory services in Chennai,
+                                helping clients buy and sell residential and commercial plots with confidence.
+                                Our process focuses on legal verification, clear documentation, and transparent
+                                property transactions.
+                            </p>
+                            <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                                We assist with verified plots, DTCP and CMDA approved layouts, title deed
+                                verification, land valuation, registration support, and end-to-end advisory
+                                for safe property decisions.
+
                             </p>
 
                             <div className="space-y-6">

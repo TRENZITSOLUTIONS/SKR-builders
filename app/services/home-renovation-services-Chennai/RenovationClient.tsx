@@ -74,9 +74,15 @@ export default function RenovationClient() {
                     <div className="text-center mb-16 max-w-3xl mx-auto">
                         <h2 className="text-3xl font-bold text-[#0F4C81] mb-6">Elevate Your Existing Property</h2>
                         <p className="text-lg text-gray-600 leading-relaxed">
-                            Don't relocate—renovate. Identify the hidden potential in your current property with our
-                            premium remodeling services. We specialize in turning outdated homes and commercial
-                            structures into state-of-the-art masterpieces using high-grade materials.
+                            SKR Builders & Promoters provide professional renovation services in Chennai
+                            for residential and commercial properties. Our renovation solutions focus on
+                            structural safety, functional upgrades, and long-term durability.
+                        </p>
+                        <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                            We handle home remodeling, building renovation, waterproofing,
+                            electrical and plumbing upgrades, interior renovation, and complete
+                            property transformation with minimal disruption and clear execution plans.
+
                         </p>
                     </div>
 

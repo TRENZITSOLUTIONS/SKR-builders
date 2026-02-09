@@ -75,11 +75,17 @@ export default function InteriorClient() {
                         <h2 className="text-3xl font-bold text-[#0F4C81] mb-8">Elegance in Every Detail</h2>
                         <div className="prose prose-lg text-gray-600 mb-12">
                             <p>
-                                SKR Builders and Promoters offer comprehensive interior design services in Chennai.
-                                Whether it's your dream home or a high-performance office, we blend aesthetics with functionality.
+                                SKR Builders & Promoters offer professional interior design services in Chennai
+                                for homes, offices, and commercial spaces. Our interior solutions focus on
+                                functional planning, durable materials, and clean execution from concept to
+                                handover.
+
                             </p>
                             <p>
-                                Our expertise covers space planning, material selection, and expert execution, or what we call "turnkey interior services".
+                                Our services include modular kitchen design, wardrobes, lighting layouts,
+                                false ceilings, custom furniture, and complete turnkey interior execution
+                                tailored to client requirements and budgets.
+
                             </p>
                         </div>
 

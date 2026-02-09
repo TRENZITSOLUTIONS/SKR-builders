@@ -476,8 +476,10 @@ export default function V13() {
               transition={{ duration: 0.8 }}
               className="text-xl text-gray-200 max-w-xl mb-12 border-l-4 border-[#0F4C81] pl-6 backdrop-blur-sm bg-black/20 py-4 rounded-r-lg"
             >
-              We don't just pour concrete. We engineer lifestyles.
-              Experience the pinnacle of construction with Chennai's finest.
+              SKR Builders & Promoters is a professional residential and commercial
+              construction company in Chennai, delivering end-to-end turnkey house
+              construction with transparent per sq.ft pricing, premium branded materials,
+              and disciplined project execution.
             </motion.p>
             <motion.div
               initial={{ opacity: 0 }}
@@ -523,28 +525,28 @@ export default function V13() {
               desc="Building your dream home from the ground up."
               image="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=2053"
               num="01"
-              link="/services/construction"
+              link="/services/home-construction-chennai"
             />
             <ComplexServiceCard
               title="Interior Design"
               desc="Elegant spaces tailored to your lifestyle."
               image="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?q=80&w=2000"
               num="02"
-              link="/services/commercial"
+              link="/services/home-interior-design-chennai"
             />
             <ComplexServiceCard
               title="Renovation"
               desc="Breathing new life into existing structures."
               image="https://images.unsplash.com/photo-1503387762-592deb58ef4e?q=80&w=2031"
               num="03"
-              link="/services/renovation"
+              link="/services/home-renovation-services-Chennai"
             />
             <ComplexServiceCard
               title="Land Advisory"
               desc="Verified land buying and selling services."
               image="https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=2000"
               num="04"
-              link="/services/land-advisory"
+              link="/services/plot-legal-verification-Chennai "
             />
           </motion.div>
         </div>
@@ -563,8 +565,14 @@ export default function V13() {
               <h3 className="text-[#E63946] font-bold tracking-widest uppercase mb-2">About Us</h3>
               <h2 className="text-4xl font-bold mb-6">Quality You Can Trust</h2>
               <p className="text-blue-100 leading-relaxed mb-6">
-                At SKR Builders and Promoters, we don't just build structures; we build relationships.
-                Led by R. Anand, our team is committed to delivering excellence.
+                SKR Builders and Promoters is a Chennai-based construction company led by
+                R. Anand, built on principles of transparency, quality execution, and
+                client accountability.
+
+                With hands-on project supervision and a structured construction workflow,
+                we ensure every project meets defined standards in strength, finish,
+                and long-term durability.
+
               </p>
               <ul className="space-y-3">
                 {['Premium Quality Materials', 'On-time Delivery', 'Transparent Pricing'].map((item, i) => (

@@ -43,9 +43,11 @@ export default function ConstructionClient() {
                         <h2 className="text-3xl font-bold text-[#0F4C81] mb-8">Building Your Legacy</h2>
                         <div className="prose prose-lg text-gray-600 mb-12">
                             <p>
-                                At SKR Builders, we understand that building a home is one of life's most significant investments.
-                                Our residential construction services are designed to provide you with a seamless, transparent,
-                                and high-quality building experience.
+                                SKR Builders & Promoters provides professional house construction services
+                                in Chennai, specializing in individual homes, villas, and commercial buildings.
+                                We offer end-to-end turnkey execution with transparent pricing, premium materials,
+                                and strict quality control.
+
                             </p>
                             <p>
                                 We specialize in turnkey projects, handling everything from architectural planning and structural
